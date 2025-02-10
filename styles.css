@@ -1,3 +1,4 @@
+/* Gab Jardin */
 /* General Styles */
 body {
     display: flex;
@@ -88,7 +89,7 @@ header .menu-toggle {
     cursor: pointer;
     color: white;
     position: absolute;
-    left: 20px;
+    left: 20px; 
 }
 
 /* Filter Section */

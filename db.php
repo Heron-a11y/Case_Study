@@ -1,3 +1,4 @@
+<!-- Miguel Larios -->
 <?php
 $servername = "localhost";
 $username = "root";
