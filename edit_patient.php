@@ -1,3 +1,4 @@
+<!-- Miguel Larios -->
 <?php
 include 'db.php';
 

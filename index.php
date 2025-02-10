@@ -1,3 +1,4 @@
+<!-- Gab Jardin -->
 <?php include 'db.php'; ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -17,10 +18,8 @@
             <span>Admin Profile</span>
         </div>
         <div class="sidebar-links">
-            <a href="#">Patient’s List</a>
-            <a href="#">Update Information</a>
-            <a href="#">About / Settings</a>
-            <a href="#" class="btn-logout">Log Out</a>
+            <a href="patient_details.php">Patient’s Details</a>
+            <a href="logout.php" class="btn-logout">Log Out</a>
         </div>
     </div>
 
@@ -32,29 +31,23 @@
             Admin Dashboard
         </header>
 
-        <div class="filter-section">
+                <div class="filter-section">
             <div class="filter-options">
                 <div>
-                    <label for="sortByName">Sort by ID:</label>
+                    <label for="sortByName">Sort by Name:</label>
                     <select id="sortByName">
-                        <option value="asc">Ascending</option>
-                        <option value="desc">Descending</option>
-                    </select>
-                </div>
-                <div>
-                    <label for="sortByID">Sort by Name:</label>
-                    <select id="sortByID">
-                        <option value="nameasc">A To Z</option>
-                        <option value="namedesc">Z To A</option>
+                        <option value="asc">A to Z</option>
+                        <option value="desc">Z to A</option>
                     </select>
                 </div>
                 <div>
                     <label for="sortByStatus">Sort by Status:</label>
                     <select id="sortByStatus">
-                    <option value="critical">Critical</option>
-                    <option value="undertreatment">Under Treatment</option>
-                    <option value="stable">Stable</option>
-                    <option value="recovered">Recovered</option>
+                        <option value="">All Status</option> <!-- ✅ Added to show all patients -->
+                        <option value="Critical">Critical</option>
+                        <option value="Under Treatment">Under Treatment</option>
+                        <option value="Stable">Stable</option>
+                        <option value="Recovered">Recovered</option>
                     </select>
                 </div>
             </div>
@@ -63,16 +56,14 @@
                 <button class="btn btn-primary" id="addPatientBtn">Add Patient Case</button>
             </div>
         </div>
+
         <table id="patientTable">
             <tr>
                 <th>Patient's ID</th>
                 <th>Patient's Name</th>
                 <th>Date of Service</th>
-                <th>Client Report</th>
-                <th>Observation&Findings</th>
-                <th>Clinical Evaluation</th>
-                <th>Treatment Strategy</th>
                 <th>Status</th>
+                <th>Actions</th>
             </tr>
             <tbody id="patientList">
                 <?php include 'fetch_patients.php'; ?>
@@ -91,33 +82,38 @@
                 <div class="modal-body">
                     <form id="addPatientForm">
                         <div class="mb-3">
-                            <label for="patient_id" class="form-label">Patient ID:</label>
-                            <input type="text" class="form-control" id="patient_id" name="patient_id" required>
+                            <label for="Patient_name" class="form-label">Patient Name:</label>
+                            <input type="text" class="form-control" id="Patient_name" name="Patient_name" required>
                         </div>
                         <div class="mb-3">
-                            <label for="name" class="form-label">Patient Name:</label>
-                            <input type="text" class="form-control" id="name" name="name" required>
+                            <label for="Date_of_Service" class="form-label">Date of Service:</label>
+                            <input type="date" class="form-control" id="Date_of_Service" name="Date_of_Service" required>
                         </div>
                         <div class="mb-3">
-                            <label for="date_of_service" class="form-label">Date of Service:</label>
-                            <input type="date" class="form-control" id="date_of_service" name="date_of_service" required>
+                            <label for="Client_Report" class="form-label">Client Report:</label>
+                            <textarea class="form-control" id="Client_Report" name="Client_Report" required></textarea>
                         </div>
                         <div class="mb-3">
-                            <label for="subjective" class="form-label">Client Report:</label>
-                            <textarea class="form-control" id="subjective" name="subjective" required></textarea>
+                            <label for="Observation_Findings" class="form-label">Observation & Findings:</label>
+                            <textarea class="form-control" id="Observation_Findings" name="Observation_Findings" required></textarea>
                         </div>
                         <div class="mb-3">
-                            <label for="objective" class="form-label">Observation & Findings:</label>
-                            <textarea class="form-control" id="objective" name="objective" required></textarea>
+                            <label for="Clinical_Evaluation" class="form-label">Clinical Evaluation:</label>
+                            <textarea class="form-control" id="Clinical_Evaluation" name="Clinical_Evaluation" required></textarea>
                         </div>
                         <div class="mb-3">
-                            <label for="assessment" class="form-label">Clinical Evaluation:</label>
-                            <textarea class="form-control" id="assessment" name="assessment" required></textarea>
+                            <label for="Treatment_Strategy" class="form-label">Treatment Strategy:</label>
+                            <textarea class="form-control" id="Treatment_Strategy" name="Treatment_Strategy" required></textarea>
                         </div>
-                        <div class="mb-3">
-                            <label for="plan" class="form-label">Treatment Strategy:</label>
-                            <textarea class="form-control" id="plan" name="plan" required></textarea>
-                        </div>
+                        <div class="form-floating mb-3">
+                        <select class="form-select" id="status" name="status" required>
+                            <option value="Critical">Critical</option>
+                            <option value="Under Treatment">Under Treatment</option>
+                            <option value="Stable">Stable</option>
+                            <option value="Recovered">Recovered</option>
+                        </select>
+                        <label for="status">Status</label>
+                    </div>
                         <button type="submit" class="btn btn-success">Save</button>
                     </form>
                 </div>

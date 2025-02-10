@@ -1,3 +1,4 @@
+<!-- Carl Manuel Gonzales -->
 <?php
 session_start();
 session_destroy();
